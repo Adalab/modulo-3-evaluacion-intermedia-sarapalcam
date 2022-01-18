@@ -11,6 +11,7 @@ function App() {
     name: "",
     counselor: "",
     speciality: "",
+    id: ""
   });
 
   useEffect(() => {
@@ -45,6 +46,8 @@ function App() {
   };
 
   const handleClickAddBtn = () => {
+    //Esto me faltaba, lo había hecho con index. De todos modos es algo que se hace en backend
+    newAdalaber.id = adalabers.length;
     const addAdalaber = [...adalabers, newAdalaber];
     setAdalabers(addAdalaber);
     setDefaultInput();
@@ -59,13 +62,13 @@ function App() {
         ? eachAdalaber.counselor === selectSearch
         : eachAdalaber.counselor === "Dayana" || "Iván" || "Yanelis"
     )
-    .map((eachAdalaber, index) => {
+    .map((eachAdalaber) => {
       return (
-        <tr key={index}>
+        <tr key={eachAdalaber.id}>
           <th className="table__columns">{eachAdalaber.name}</th>
           <th className="table__columns">{eachAdalaber.counselor}</th>
           <th className="table__columns">{eachAdalaber.speciality}</th>
-          {/* <th>
+          {/* Las etiquetas <i> van dentro de las <a>. Ver cómo hacer esta parte <th>
         <i class="fab fa-github-alt" href={eachAdalaber.social_networks[0].url} title={`Link al ${eachAdalaber.social_networks[0].name}`}></i>
         <i class="fab fab fa-linkedin" href={eachAdalaber.social_networks[0].url} title={`Link al ${eachAdalaber.social_networks[0].name}`}></i>
         <i class="fab fab fa-twitter" href={eachAdalaber.social_networks[0].url} title={`Link al ${eachAdalaber.social_networks[0].name}`}></i>

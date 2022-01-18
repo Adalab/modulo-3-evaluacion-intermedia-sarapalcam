@@ -1,0 +1,88 @@
+.header{
+    padding: 20px 10%;
+    background-color:rgb(28, 121, 98);
+    color: white;
+    &__title{
+        font-size: 44px;
+        font-weight: bold;
+    }
+}
+
+.filters {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    margin: 30px 10%;
+    &__name{
+        margin-bottom: 20px;
+        &--input{
+            margin-left: 15px;
+        }
+    }
+    &__select {
+        &--input{
+            margin-left: 15px;
+            cursor: pointer;
+        }
+    }
+}
+
+.table{
+    margin: 0 10%;
+    min-width: 70%;
+    text-align: left;
+    &__header{
+        &--row{
+            background-color: rgb(28, 121, 98);
+            color: white;
+            border: none;
+        }
+    }
+    &__columns{
+        padding: 3px;
+        width: 33%;
+        border: none;
+
+    }
+}
+
+.add-adalaber{
+    margin: 50px 10%;
+    &__subtitle{
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+    &__name{
+        display: flex;
+        width: 290px;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+    &__counselor{
+        display: flex;
+        width: 290px;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+    &__speciality{
+        display: flex;
+        width: 290px;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+    &__btn{
+        background-color: rgb(28, 121, 98);
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 20px;
+        box-shadow: 5px 5px 10px rgba($color: #000000, $alpha: .3);
+        cursor: pointer;
+        transition: all ease-in-out .3s;
+        &:hover{
+            transform: translateY(-3px);
+            background-color: rgb(39, 180, 145);
+        }
+    }
+}

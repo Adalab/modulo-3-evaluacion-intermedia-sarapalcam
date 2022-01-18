@@ -65,11 +65,6 @@ function App() {
           <th className="table__columns">{eachAdalaber.name}</th>
           <th className="table__columns">{eachAdalaber.counselor}</th>
           <th className="table__columns">{eachAdalaber.speciality}</th>
-          {/* <th>
-        <i class="fab fa-github-alt" href={eachAdalaber.social_networks[0].url} title={`Link al ${eachAdalaber.social_networks[0].name}`}></i>
-        <i class="fab fab fa-linkedin" href={eachAdalaber.social_networks[0].url} title={`Link al ${eachAdalaber.social_networks[0].name}`}></i>
-        <i class="fab fab fa-twitter" href={eachAdalaber.social_networks[0].url} title={`Link al ${eachAdalaber.social_networks[0].name}`}></i>
-      </th> */}
         </tr>
       );
     });
@@ -123,7 +118,6 @@ function App() {
               <th className="table__columns">Nombre</th>
               <th className="table__columns">Tutora</th>
               <th className="table__columns">Especialidad</th>
-              {/* <th>Redes</th> */}
             </tr>
           </thead>
           <tbody>{htmlTable}</tbody>

@@ -11,6 +11,7 @@ function App() {
     name: "",
     counselor: "",
     speciality: "",
+    id: "",
   });
 
   useEffect(() => {
@@ -45,9 +46,49 @@ function App() {
   };
 
   const handleClickAddBtn = () => {
+    newAdalaber.id = adalabers.length;
     const addAdalaber = [...adalabers, newAdalaber];
     setAdalabers(addAdalaber);
     setDefaultInput();
+  };
+
+  const renderSocialMedia = (mediaArray, adalaberName) => {
+    return mediaArray.map((eachMedia) => {
+      if (eachMedia.name === "GitHub") {
+        return (
+          <a
+            href={eachMedia.url}
+            title={`Link al gitHub de ${adalaberName}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <i className="fab fa-github-alt media__icon"></i>
+          </a>
+        );
+      } else if (eachMedia.name === "LinkedIn") {
+        return (
+          <a
+            href={eachMedia.url}
+            title={`Link al Linkedin de ${adalaberName}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <i className="fab fab fa-linkedin media__icon"></i>
+          </a>
+        );
+      } else if (eachMedia.name === "Twitter") {
+        return (
+          <a
+            href={eachMedia.url}
+            title={`Link al Twitter de ${adalaberName}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <i className="fab fab fa-twitter media__icon"></i>
+          </a>
+        );
+      }
+    });
   };
 
   const htmlTable = adalabers
@@ -59,12 +100,16 @@ function App() {
         ? eachAdalaber.counselor === selectSearch
         : eachAdalaber.counselor === "Dayana" || "Iván" || "Yanelis"
     )
-    .map((eachAdalaber, index) => {
+    .map((eachAdalaber) => {
+      console.log(eachAdalaber.social_networks);
       return (
-        <tr key={index}>
+        <tr key={eachAdalaber.id}>
           <th className="table__columns">{eachAdalaber.name}</th>
           <th className="table__columns">{eachAdalaber.counselor}</th>
           <th className="table__columns">{eachAdalaber.speciality}</th>
+          <th className="table__columns">
+            {renderSocialMedia(eachAdalaber.social_networks, eachAdalaber.name)}
+          </th>
         </tr>
       );
     });
@@ -118,6 +163,7 @@ function App() {
               <th className="table__columns">Nombre</th>
               <th className="table__columns">Tutora</th>
               <th className="table__columns">Especialidad</th>
+              <th>Redes</th>
             </tr>
           </thead>
           <tbody>{htmlTable}</tbody>

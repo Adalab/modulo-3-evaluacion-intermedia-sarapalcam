@@ -11,7 +11,7 @@ function App() {
     name: "",
     counselor: "",
     speciality: "",
-    id: ""
+    id: "",
   });
 
   useEffect(() => {
@@ -46,11 +46,49 @@ function App() {
   };
 
   const handleClickAddBtn = () => {
-    //Esto me faltaba, lo había hecho con index. De todos modos es algo que se hace en backend
     newAdalaber.id = adalabers.length;
     const addAdalaber = [...adalabers, newAdalaber];
     setAdalabers(addAdalaber);
     setDefaultInput();
+  };
+
+  const renderSocialMedia = (mediaArray, adalaberName) => {
+    return mediaArray.map((eachMedia) => {
+      if (eachMedia.name === "GitHub") {
+        return (
+          <a
+            href={eachMedia.url}
+            title={`Link al gitHub de ${adalaberName}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <i className="fab fa-github-alt media__icon"></i>
+          </a>
+        );
+      } else if (eachMedia.name === "LinkedIn") {
+        return (
+          <a
+            href={eachMedia.url}
+            title={`Link al Linkedin de ${adalaberName}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <i className="fab fab fa-linkedin media__icon"></i>
+          </a>
+        );
+      } else if (eachMedia.name === "Twitter") {
+        return (
+          <a
+            href={eachMedia.url}
+            title={`Link al Twitter de ${adalaberName}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <i className="fab fab fa-twitter media__icon"></i>
+          </a>
+        );
+      }
+    });
   };
 
   const htmlTable = adalabers
@@ -63,16 +101,15 @@ function App() {
         : eachAdalaber.counselor === "Dayana" || "Iván" || "Yanelis"
     )
     .map((eachAdalaber) => {
+      console.log(eachAdalaber.social_networks);
       return (
         <tr key={eachAdalaber.id}>
           <th className="table__columns">{eachAdalaber.name}</th>
           <th className="table__columns">{eachAdalaber.counselor}</th>
           <th className="table__columns">{eachAdalaber.speciality}</th>
-          {/* Las etiquetas <i> van dentro de las <a>. Ver cómo hacer esta parte <th>
-        <i class="fab fa-github-alt" href={eachAdalaber.social_networks[0].url} title={`Link al ${eachAdalaber.social_networks[0].name}`}></i>
-        <i class="fab fab fa-linkedin" href={eachAdalaber.social_networks[0].url} title={`Link al ${eachAdalaber.social_networks[0].name}`}></i>
-        <i class="fab fab fa-twitter" href={eachAdalaber.social_networks[0].url} title={`Link al ${eachAdalaber.social_networks[0].name}`}></i>
-      </th> */}
+          <th className="table__columns">
+            {renderSocialMedia(eachAdalaber.social_networks, eachAdalaber.name)}
+          </th>
         </tr>
       );
     });
@@ -126,7 +163,7 @@ function App() {
               <th className="table__columns">Nombre</th>
               <th className="table__columns">Tutora</th>
               <th className="table__columns">Especialidad</th>
-              {/* <th>Redes</th> */}
+              <th>Redes</th>
             </tr>
           </thead>
           <tbody>{htmlTable}</tbody>
